@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link type="text/css" href="../static/css/styles.css" rel="stylesheet" >
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+	<div class="form">
+		<legend>ВАШ УЧАСТОК</legend>
+		<div class="block">
+			<div class="label">Целевое назначение :</div>
+			<div class="context">{{context.cel}}</div>
+		</div>
+		<div class="block">
+			<div class="label">Регион :</div>
+			<div class="context">{{context.region}}</div>
+		</div>
+		<div class="block">
+			<div class="label">Городской округ :</div>
+			<div class="context">{{context.gor_okrug}}</div>
+		</div>
+		<div class="block">
+			<div class="label">Населенный пункт :</div>
+			<div class="context">{{context.place}}</div>
+		</div>
+		<div class="block">
+			<div class="label">Основное шоссе :</div>
+			<div class="context">{{context.main_shosse}}</div>
+		</div>
+		<div class="block">
+			<div class="label">Площадь участка :</div>
+			<div class="context">{{context.square}}</div>
+		</div>
+	    <div class="block">
+			<div class="label">Расстояние от МКАД :</div>
+			<div class="context">{{context.distance}}</div>
+		</div>
+		  <div class="block">
+			<div class="label">Цена за сотку :</div>
+			<div class="context">{{context.price}} тысяч рублей .</div>
+		</div>
+        <a href="{{url_for('home')}}"><button type="submit">Оценить новый участок</button></a>
+    </div>
+<br>
+<br>
+
+</body>
+</html>

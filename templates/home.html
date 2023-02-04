@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<link type="text/css" href="../static/css/styles.css" rel="stylesheet" >
+    <meta charset="UTF-8">
+    <title>Форма ввода</title>
+</head>
+<body>
+<div>
+
+    <form class="form" action="{{url_for('predict')}}" method="post">
+		<legend>ОПРЕДЕЛЕНИЕ СТОИМОСТИ УЧАСТКА</legend>
+		<fieldset>
+			<label class="label">Целевое назначение :</label>
+			<select class="select" type="text" name="cel"  maxlength="100" required="required">
+			<option selected disabled>-- выберите из списка --</option>
+			<option>ИЖС</option>
+			<option>СНТ, ДНП</option>
+			</select>
+		 </fieldset>
+		
+		<fieldset>
+		    <label class="label">Регион :</label>
+			<select class="select" type="text" name="region"    maxlength="100" required="required">
+			<option selected disabled>-- выберите из списка --</option>
+			<option>Москва</option>
+			<option>Московская область</option>
+			</select>
+		</fieldset> 
+		
+		<fieldset>	
+			<label class="label">Городской округ :</label>
+			<select class="select" type="text" name="gor_okrug" method="get" action="/"   maxlength="100" required="required">
+			<option selected disabled>-- выберите из списка --</option>
+				{% for gor_okrug in context.gor_okrugs %}
+				<option value="{{gor_okrug}}">{{gor_okrug}}</option>
+				{% endfor %}
+			</select>
+		</fieldset>
+			
+		<fieldset>
+			<label class="label">Населенный пункт :</label>
+			<input  type="text" name="place" method="get" action="/" placeholder="-- начните ввод названия --"  maxlength="100" list="list_place" required="required">
+			<datalist id="list_place">
+				{% for place in context.all_places %}
+				<option value="{{place}}">{{place}}</option>
+				{% endfor %}
+			</datalist>
+		</fieldset>
+			
+		<fieldset>
+			<label class="label">Основное шоссе :</label>
+			<select  class="select" type="text" name="main_shosse" method="get" action="/" maxlength="50" required="required">
+				<option selected disabled>-- выберите из списка --</option>
+				{% for main_shosse in context.main_shosses %}
+				<option value="{{main_shosse}}">{{main_shosse}}</option>
+				{% endfor %}
+			</select>
+		</fieldset>
+			
+		<fieldset>
+			<label class="label">Площадь участка :</label>
+			<input  type="int" name="square" method="get" action="/" placeholder="-- число --" size = "10" maxlength="5"  required="required">
+		</fieldset>
+
+		<br>
+        <button type="submit">Узнать цену</button>
+    </form>
+</div>
+<br>
+<br>
+
+<div>{{pred}}</div>
+<div>{{data_ns}}</div>
+<div>{{dist}}</div>
+
+</body>
+</html>
